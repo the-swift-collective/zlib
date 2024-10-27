@@ -1,4 +1,4 @@
-// swift-tools-version: 5.8
+// swift-tools-version: 5.5
 //
 // SPDX-License-Identifier: Zlib
 // Copyright Contributors to the Zlib project
@@ -40,7 +40,7 @@ let package = Package(
         .headerSearchPath("."),
         .define("HAVE_ATTRIBUTE_ALIGNED", to: "1"),
         .define("WITH_GZFILEOP", to: "1"),
-        .define("HAVE_UNISTD_H", to: "1", .when(platforms: [.macOS, .iOS, .visionOS, .tvOS, .watchOS, .linux, .android, .openbsd])),
+        .define("HAVE_UNISTD_H", to: "1", .when(platforms: [.macOS, .iOS, .visionOS, .tvOS, .watchOS, .linux, .android])),
         .define("Z_HAVE_STDARG_H", to: "1"),
       ],
       cxxSettings: [
