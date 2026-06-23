@@ -39,9 +39,11 @@ let package = Package(
       cSettings: [
         .headerSearchPath("."),
         .define("HAVE_ATTRIBUTE_ALIGNED", to: "1"),
-        .define("WITH_GZFILEOP", to: "1"),
+        .define("WITH_GZFILEOP", to: "1", .when(platforms: [.macOS, .iOS, .visionOS, .tvOS, .watchOS, .linux, .android, .macCatalyst, .windows])),
         .define("HAVE_UNISTD_H", to: "1", .when(platforms: [.macOS, .iOS, .visionOS, .tvOS, .watchOS, .linux, .android, .macCatalyst])),
         .define("Z_HAVE_STDARG_H", to: "1"),
+        .define("NO_GZCOMPRESS", .when(platforms: [.wasi])),
+        .define("NO_GZIP", .when(platforms: [.wasi])),
       ],
       cxxSettings: [
         .define("_ALLOW_COMPILER_AND_STL_VERSION_MISMATCH", .when(platforms: [.windows])),
