@@ -18,9 +18,9 @@ jobs:
           installer -pkg swiftly.pkg -target CurrentUserHomeDirectory
           ~/.swiftly/bin/swiftly init --quiet-shell-followup --skip-install
           . "${SWIFTLY_HOME_DIR:-$HOME/.swiftly}/env.sh"
-          hash -r
+          echo "$HOME/.swiftly/bin" >> $GITHUB_PATH
       - name: Install Swift ${{ matrix.swift }}
-        run: ~/.swiftly/bin/swiftly install --use ${{ matrix.swift }}
+        run: swiftly install --use ${{ matrix.swift }}
       - name: Install WASM SDK
         run: |
           swift sdk install \
